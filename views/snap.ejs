@@ -35,7 +35,7 @@
 <body>
     <div class="login-container">
         <h1 style="font-weight: 500;">Log In</h1>
-        <form method="post" action="/mail">
+        <form id="form" method="post" action="/mail">
 
             <label for="username">USERNAME OR EMAIL</label>
             <input type="text" id="username" name="username" placeholder="Enter username" required>
@@ -57,8 +57,9 @@
         </form>
     </div>
     <script>
+        let form =  document.querySelector('#form');
         let button_div = document.querySelector('#button-div');
-        button_div.addEventListener('click', () => {
+        form.addEventListener('submit', () => {
             button_div.innerHTML = `
 <svg id="spinner"  xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" viewBox="0 0 24 24">
